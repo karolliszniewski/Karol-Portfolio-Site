@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "karol/callout",
+	"version": "0.1.0",
+	"title": "Callout",
+	"category": "text",
+	"icon": "info",
+	"description": "A simple callout box — example custom block for the portfolio.",
+	"keywords": [ "notice", "highlight", "box" ],
+	"textdomain": "karol-blocks",
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": { "background": true, "text": true },
+		"spacing": { "padding": true, "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

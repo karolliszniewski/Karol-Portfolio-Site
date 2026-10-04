@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Karol Portfolio">
+	<description>Karol Portfolio theme — follows Human Made coding standards.</description>
+
+	<file>.</file>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg value="sp"/>
+
+	<rule ref="vendor/humanmade/coding-standards"/>
+
+	<config name="minimum_supported_wp_version" value="6.6"/>
+	<config name="testVersion" value="8.1-"/>
+</ruleset>

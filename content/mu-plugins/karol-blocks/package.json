@@ -1,0 +1,25 @@
+{
+	"name": "karol-blocks",
+	"version": "0.1.0",
+	"description": "Custom blocks for the Karol portfolio (Human Made plugin conventions).",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "eslint src",
+		"lint:css": "stylelint \"src/**/*.scss\""
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.29.9",
+		"@humanmade/eslint-config": "^2.1.0",
+		"@humanmade/stylelint-config": "^1.3.0",
+		"@wordpress/eslint-plugin": "^20.3.0",
+		"@wordpress/scripts": "^36.0.0",
+		"eslint": "^9.39.5",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-react": "^7.37.5",
+		"stylelint": "^16.26.1"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"name": "karol/portfolio-site",
+	"description": "Karol portfolio — client-grade full WordPress site build, assembled the Human Made way: Composer-managed core and third-party plugins, custom code in content/mu-plugins, theme in content/themes.",
+	"type": "project",
+	"license": "proprietary",
+	"require": {
+		"php": ">=8.2",
+		"roots/wordpress-no-content": "^7.0",
+		"roots/wordpress-core-installer": "^1.0",
+		"composer/installers": "^2.0",
+		"wpackagist-plugin/woocommerce": "^11.1"
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [ "wpackagist-plugin/*", "wpackagist-theme/*" ]
+		}
+	],
+	"extra": {
+		"wordpress-install-dir": "wordpress",
+		"installer-paths": {
+			"content/plugins/{$name}/": [ "type:wordpress-plugin" ],
+			"content/mu-plugins/{$name}/": [ "type:wordpress-muplugin" ],
+			"content/themes/{$name}/": [ "type:wordpress-theme" ]
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"roots/wordpress-core-installer": true
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "karol-portfolio",
+	"version": "0.1.0",
+	"description": "Block-based FSE portfolio theme built to Human Made engineering conventions.",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"lint:js": "eslint assets/js",
+		"lint:css": "stylelint \"assets/css/**/*.css\" \"style.css\""
+	},
+	"devDependencies": {
+		"@humanmade/eslint-config": "*",
+		"@humanmade/stylelint-config": "*"
+	}
+}

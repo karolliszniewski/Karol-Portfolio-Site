@@ -1,0 +1,46 @@
+# Local runtime (official images).
+name: karol-new-portfolio
+
+services:
+  db:
+    image: mariadb:lts
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-wordpress}
+      MARIADB_USER: ${DB_USER:-wordpress}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wp:
+    image: wordpress:php8.3-apache
+    entrypoint: ["apache2-foreground"]   # bypass the image's core installer (core is Composer-managed)
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8810:80"
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/apache.conf:/etc/apache2/conf-enabled/zzz-karol.conf:ro
+
+  cli:
+    image: wordpress:cli-php8.3
+    profiles: ["tools"]
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www/html
+
+volumes:
+  db-data:

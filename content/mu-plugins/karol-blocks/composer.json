@@ -1,0 +1,21 @@
+{
+	"name": "karol/karol-blocks",
+	"description": "Custom blocks for the Karol portfolio — a must-use module (Human Made plugin conventions).",
+	"type": "wordpress-muplugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"humanmade/coding-standards": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"lint:fix": "phpcbf"
+	}
+}

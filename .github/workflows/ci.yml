@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  php:
+    name: PHP coding standards (HM phpcs)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        path:
+          - content/themes/karol-portfolio
+          - content/mu-plugins/karol-blocks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - name: Install dependencies
+        working-directory: ${{ matrix.path }}
+        run: composer install --no-interaction --no-progress
+      - name: Run phpcs
+        working-directory: ${{ matrix.path }}
+        run: vendor/bin/phpcs -p
+
+  js-css:
+    name: JS + CSS standards (HM eslint / stylelint)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: content/mu-plugins/karol-blocks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Lint JavaScript
+        run: npm run lint:js
+      - name: Lint CSS
+        run: npm run lint:css
